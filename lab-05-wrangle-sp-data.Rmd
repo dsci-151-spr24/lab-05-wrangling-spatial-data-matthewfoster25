@@ -1,6 +1,7 @@
 ---
 title: "Lab 05 - La Quinta is Spanish for next to Denny's, Pt. 2"
 subtitle: "Wrangling spatial data"
+author: "Matthew Foster"
 output: 
   tufte::tufte_html:
     tufte_variant: "envisioned"
@@ -42,7 +43,7 @@ You can load them by running the following in your Console:
 
 When you do this lab to install `dsbox` you can copy the code below into the console:
 
-```
+```{r}
 install.packages("devtools")
 devtools::install_github("tidyverse/dsbox")
 ```
