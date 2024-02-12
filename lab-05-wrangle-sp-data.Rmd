@@ -43,7 +43,7 @@ You can load them by running the following in your Console:
 
 When you do this lab to install `dsbox` you can copy the code below into the console:
 
-```{r}
+```{r message = FALSE}
 install.packages("devtools")
 devtools::install_github("tidyverse/dsbox")
 ```
@@ -69,6 +69,9 @@ dn_ak <- dennys %>%
   filter(state == "AK")
 nrow(dn_ak)
 ```
+
+**Answer:**
+There are 3 Denny's in Alaska.
 
 2.  Filter the La Quinta dataframe for Alaska (AK) and save the result as `lq_ak`. How many La Quinta locations are there in Alaska?
 
