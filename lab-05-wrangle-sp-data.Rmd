@@ -151,6 +151,19 @@ These varibles are renamed to include `.x` and `.y` because the two data frames 
 
 Now that we have the data in the format we wanted, all that is left is to calculate the distances between the pairs.
 
+```{r}
+#| label: observations-names-dn-lq-ak
+#| eval: true
+
+
+nrow(dn_lq_ak)
+
+names(dn_lq_ak)
+```
+
+**Answer:**
+There are `r nrow(dn_lq_ak)` observations
+
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
 5.  What function from the tidyverse do we use the add a new variable to a data frame while keeping the existing variables?
