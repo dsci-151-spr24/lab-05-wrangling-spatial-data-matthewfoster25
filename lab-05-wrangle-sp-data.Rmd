@@ -309,7 +309,42 @@ dn_lq_tx_mindist %>% summarise(mean_dist = mean(closest))
 
 11. Repeat the same analysis for a state of your choosing, different than the ones we covered so far.
 
+**Answer:**
+The mean distance between Denny's and La Quinta locations in Oregon is 71.7 miles.
+
+```{r}
+#| label: dn-lq-or
+#| eval: true
+
+dn_or <- dennys %>%
+  filter(state == "OR")
+nrow(dn_or)
+
+lq_or <- laquinta %>%
+  filter(state == "OR")
+nrow(lq_or)
+
+dn_lq_or <- full_join(dn_or, lq_or, by = "state")
+dn_lq_or
+
+dn_lq_or <- dn_lq_or %>%
+  mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round=3))
+
+dn_lq_or_mindist <- dn_lq_or %>%
+  group_by(address.x) %>%
+  summarise(closest = min(distance))
+
+ggplot(dn_lq_or_mindist, aes(x=closest)) +
+  geom_histogram()
+
+dn_lq_or_mindist %>% summarise(mean_dist = mean(closest))
+
+```
+
 12. Among the states you examined, where is Mitch Hedberg's joke most likely to hold true?
     Explain your reasoning.
+    
+**Answer:**
+The State where Mitch Hedberg's joke about La Quinte meaning beside Denny's is the most true in Alaska where the mean distance between locations is only 4.41 miles. Texas is not far behind at 5.79 miles. The joke does not appear to be true in either North Carolina or Oregon which have a mean distance of 65.4 and 71.7 miles between their Denny's and La Quinta locations.
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
