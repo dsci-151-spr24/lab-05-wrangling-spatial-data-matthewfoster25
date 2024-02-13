@@ -275,6 +275,38 @@ dn_lq_nc_mindist %>% summarise(mean_dist = mean(closest))
 
 10. Repeat the same analysis for Texas.
 
+**Answer:**
+The mean distance between Denny's and La Quinta locations in Texas is 5.79 miles.
+
+```{r}
+#| label: dn-lq-tx
+#| eval: true
+
+dn_tx <- dennys %>%
+  filter(state == "TX")
+nrow(dn_tx)
+
+lq_tx <- laquinta %>%
+  filter(state == "TX")
+nrow(lq_tx)
+
+dn_lq_tx <- full_join(dn_tx, lq_tx, by = "state")
+dn_lq_tx
+
+dn_lq_tx <- dn_lq_tx %>%
+  mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round=3))
+
+dn_lq_tx_mindist <- dn_lq_tx %>%
+  group_by(address.x) %>%
+  summarise(closest = min(distance))
+
+ggplot(dn_lq_tx_mindist, aes(x=closest)) +
+  geom_histogram()
+
+dn_lq_tx_mindist %>% summarise(mean_dist = mean(closest))
+
+```
+
 11. Repeat the same analysis for a state of your choosing, different than the ones we covered so far.
 
 12. Among the states you examined, where is Mitch Hedberg's joke most likely to hold true?
