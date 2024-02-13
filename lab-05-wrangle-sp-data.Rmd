@@ -81,6 +81,9 @@ lq_ak <- laquinta %>%
 nrow(lq_ak)
 ```
 
+**Answer:**
+There are 2 La Quinta's in Alaska.
+
 Next we'll calculate the distance between all Denny's and all La Quinta locations in Alaska.
 Let's take this step by step:
 
